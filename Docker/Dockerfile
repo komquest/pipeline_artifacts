@@ -19,8 +19,10 @@ COPY ./config.sh /opt/
 #        /usr/local/apache2/conf/httpd.conf
 
 # Run Config Script to Commit to Image
-RUN chmod +x /opt/config.sh
-RUN /opt/config.sh
+# RUN chmod +x /opt/config.sh
+# RUN /opt/config.sh
+CMD chomd 755 /opt/config.sh && /opt/config.sh
+
 
 # Expose Ports
 EXPOSE 80

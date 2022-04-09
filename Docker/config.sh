@@ -27,4 +27,5 @@ sed -i -e 's/^#\(Include .*httpd-ssl.conf\)/\1/' -e 's/^#\(LoadModule .*mod_ssl.
 BASE=$(basename $0)
 PATH=$(pwd)
 FULL="${PATH}/${BASE}"
+
 rm $FULL
