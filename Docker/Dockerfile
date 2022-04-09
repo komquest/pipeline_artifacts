@@ -1,7 +1,7 @@
 FROM httpd:2.4
 #COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
-COPY ./dev.crt /usr/local/apache2/conf/
-COPY ./dev.key /usr/local/apache2/conf/
+COPY ./server.crt /usr/local/apache2/conf/
+COPY ./server.key /usr/local/apache2/conf/
 
 RUN sed -i \
         -e 's/^#\(Include .*httpd-ssl.conf\)/\1/' \
