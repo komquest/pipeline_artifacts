@@ -1,14 +1,18 @@
 FROM httpd:2.4
 #COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
+
+# Copy over Certs
 COPY ./server.crt /usr/local/apache2/conf/
 COPY ./server.key /usr/local/apache2/conf/
 
+# This will enable ssl
 RUN sed -i \
         -e 's/^#\(Include .*httpd-ssl.conf\)/\1/' \
         -e 's/^#\(LoadModule .*mod_ssl.so\)/\1/' \
         -e 's/^#\(LoadModule .*mod_socache_shmcb.so\)/\1/' \
         /usr/local/apache2/conf/httpd.conf
 
+# Expose Ports
 EXPOSE 80
 EXPOSE 443
 
