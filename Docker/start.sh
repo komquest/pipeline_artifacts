@@ -27,7 +27,7 @@ openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 -subj "/C=HW/ST=Hello/L
 
 #Build Docker Image (See Dockerfile for more information)
 
-docker build ./ -t $HTTPNAME .
+docker build ./ -t $HTTPNAME
 
 #Display Build, with simple error checking
 
