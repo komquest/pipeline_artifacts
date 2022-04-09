@@ -21,8 +21,11 @@ COPY ./config.sh /opt/
 # Run Config Script to Commit to Image
 # RUN chmod +x /opt/config.sh
 # RUN /opt/config.sh
-CMD chomd 755 /opt/config.sh && /opt/config.sh
+# CMD chomd 755 /opt/config.sh && /opt/config.sh
 
+RUN chmod 755 /opt/config.sh
+RUN /opt/config.sh
+#CMD ["/opt/config.sh"]
 
 # Expose Ports
 EXPOSE 80
