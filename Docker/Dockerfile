@@ -1,5 +1,5 @@
 FROM httpd:2.4
-COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
+#COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
 COPY ./dev.crt /usr/local/apache2/conf/
 COPY ./dev.key /usr/local/apache2/conf/
 
