@@ -18,7 +18,7 @@
 
 #Get Random ID and Name
 
-ID=${hexdump -n 4 -e '4/4 "%04X" 1 "\n"' /dev/urandom}
+ID=$(hexdump -n 4 -e '4/4 "%04X" 1 "\n"' /dev/urandom)
 HTTPNAME="webserver:${ID}"
 
 #Build X509 Certs
