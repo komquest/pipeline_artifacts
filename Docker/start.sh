@@ -23,7 +23,7 @@ HTTPNAME="webserver:${ID}"
 
 #Build X509 Certs
 
-openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 -subj "/C=HW/ST=Hello/L=World/O=HelloWorld/CN=www.helloworld.com" -keyout dev.key -out dev.crt
+openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 -subj "/C=HW/ST=Hello/L=World/O=HelloWorld/CN=www.helloworld.com" -keyout server.key -out server.crt
 
 #Build Docker Image (See Dockerfile for more information)
 

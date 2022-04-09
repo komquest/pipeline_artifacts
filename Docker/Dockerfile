@@ -12,4 +12,4 @@ RUN sed -i \
 EXPOSE 80
 EXPOSE 443
 
-# CMD ["httpd-foreground"]
+CMD ["httpd-foreground"]
