@@ -8,7 +8,7 @@ pipeline {
 
         steps {
           
-          echo 'Checkout'
+          echo 'Checkout New!!!'
 
         }
       }
