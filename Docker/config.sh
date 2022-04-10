@@ -19,11 +19,11 @@
 
 #File Operations
 ## Create custom apache cert dir "/etc/pki/tls/" and set permissions
-mkdir /etc/pki/tls/
+mkdir -p /etc/pki/tls/
 chmod 644 /etc/pki/tls/
 
 ##Create custom apache http dir "/var/www/html/devsecops_practical" and set permissions
-mkdir /var/www/html/devsecops_practical/
+mkdir -p /var/www/html/devsecops_practical/
 chmod 755 /var/www/html/devsecops_practical/
 
 ##Move custom web page to new home
