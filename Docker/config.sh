@@ -85,9 +85,5 @@ sed -i -e '$aKeepAlive On' /usr/local/apache2/conf/httpd.conf
 sed -i -e '$aMaxKeepAliveRequests 100' /usr/local/apache2/conf/httpd.conf
 
 
-
-
-
-
 # Cleanup
 rm /opt/config.sh
