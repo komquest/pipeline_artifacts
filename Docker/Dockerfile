@@ -24,11 +24,12 @@ COPY ./config.sh /opt/
 # CMD chomd 755 /opt/config.sh && /opt/config.sh
 
 RUN chmod 755 /opt/config.sh
-RUN /opt/config.sh
+#RUN /opt/config.sh
 #CMD ["/opt/config.sh"]
 
 # Expose Ports
 EXPOSE 80
 EXPOSE 443
 
+ENTRYPOINT ["/opt/config.sh"]
 CMD ["httpd-foreground"]
