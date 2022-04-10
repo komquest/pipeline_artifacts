@@ -42,10 +42,10 @@ chmod 755 /etc/pki/tls/*.crt
 sed -i -e 's/\(DocumentRoot \)\(".*"\)/\1"\/var\/www\/html\/devsecops_practical\/"/' /usr/local/apache2/conf/httpd.conf
 sed -i -e 's/\(<Directory \)\(".*"\)/\1"\/var\/www\/html\/devsecops_practical\/"/' /usr/local/apache2/conf/httpd.conf
 
-## Update Listening Port Number
+## Disable port 80 Listen
+sed -i -e 's/\(Listen \)/\#\1/' /usr/local/apache2/conf/httpd.conf
 
-
-#Enable and config TLS/SSL
+#Configure TLS/SSL
 
 ## Enable TLS/SSL
 sed -i -e 's/^#\(Include .*httpd-ssl.conf\)/\1/' /usr/local/apache2/conf/httpd.conf
@@ -56,6 +56,9 @@ sed -i -e 's/^#\(LoadModule .*mod_socache_shmcb.so\)/\1/' /usr/local/apache2/con
 sed -i -e 's/\(DocumentRoot \)\(".*"\)/\1"\/var\/www\/html\/devsecops_practical\/"/' /usr/local/apache2/conf/extra/httpd-ssl.conf
 sed -i -e 's/\(SSLCertificateFile \)\(".*"\)/\1"\/etc\/pki\/tls\/server.crt"/' /usr/local/apache2/conf/extra/httpd-ssl.conf
 sed -i -e 's/\(SSLCertificateKeyFile \)\(".*"\)/\1"\/etc\/pki\/tls\/server.key"/' /usr/local/apache2/conf/extra/httpd-ssl.conf
+
+## Update Listening Port to custom (I picked 5555)
+sed -i -e 's/443/5555/' /usr/local/apache2/conf/extra/httpd-ssl.conf
 
 # Cleanup
 rm /opt/config.sh
