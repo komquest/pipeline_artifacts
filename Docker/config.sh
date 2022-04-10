@@ -63,10 +63,28 @@ sed -i -e 's/443/5555/' /usr/local/apache2/conf/extra/httpd-ssl.conf
 ## V-214253 (The Apache web server must generate a session ID using as much of the character set as possible to reduce the risk of brute force.)
 sed -i -e 's/^#\(LoadModule .*mod_unique_id.so\)/\1/' /usr/local/apache2/conf/httpd.conf
 
+## V-214229 (The Apache web server must perform server-side session management.)
+sed -i -e 's/^#\(LoadModule .*mod_session.so\)/\1/' /usr/local/apache2/conf/httpd.conf
+sed -i -e 's/^#\(LoadModule .*mod_usertrack.so\)/\1/' /usr/local/apache2/conf/httpd.conf
+
 ## V-214269 (The Apache web server must remove all export ciphers to protect the confidentiality and integrity of transmitted information)
 ## Also forced mod_ssl to only use TLSv1.2 ciphers for added security
 sed -i -e 's/\(SSLCipherSuite \)\(.*\)/\1HIGH:MEDIUM:!EXP:!SSLv3:!kRSA/' /usr/local/apache2/conf/extra/httpd-ssl.conf
 sed -i -e 's/\(SSLProxyCipherSuite \)\(.*\)/\1HIGH:MEDIUM:!EXP:!SSLv3:!kRSA/' /usr/local/apache2/conf/extra/httpd-ssl.conf
+
+## V-214246 (The Apache web server must be configured to use a specified IP address and port.)
+## Grab ip barebones since most containers don't have alot to work with. This will grab the first Ip after duplicate check
+## Might need to change based off of environment but right now it is is assumed one container = one ip
+NET=$(awk '/32 host/ { print i } {i=$2}' /proc/net/fib_trie | sort -u | sed '/127.0.0.1/,+0d' | head -1)
+sed -i -e "s/\(Listen \)/\1$NET:/" /usr/local/apache2/conf/extra/httpd-ssl.conf
+
+## V-214228 (The Apache web server must limit the number of allowed simultaneous session requests.)
+## Append to end of httpd.conf file
+sed -i -e '$a\ ' /usr/local/apache2/conf/httpd.conf
+sed -i -e '$aKeepAlive On' /usr/local/apache2/conf/httpd.conf
+sed -i -e '$aMaxKeepAliveRequests 100' /usr/local/apache2/conf/httpd.conf
+
+
 
 
 
