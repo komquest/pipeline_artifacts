@@ -18,15 +18,8 @@
 
 
 # Enable SSL
-sed -i -e 's/^#\(Include .*httpd-ssl.conf\)/\1/' -e 's/^#\(LoadModule .*mod_ssl.so\)/\1/' -e 's/^#\(LoadModule .*mod_socache_shmcb.so\)/\1/' \ /usr/local/apache2/conf/httpd.conf
-
-
+sed -i -e 's/^#\(Include .*httpd-ssl.conf\)/\1/' -e 's/^#\(LoadModule .*mod_ssl.so\)/\1/' -e 's/^#\(LoadModule .*mod_socache_shmcb.so\)/\1/' /usr/local/apache2/conf/httpd.conf
 
 
 # Cleanup
-
-BASE=$(basename $0)
-PATH=$(pwd)
-FULL="${PATH}/${BASE}"
-
-rm $FULL
+rm /opt/config.sh
