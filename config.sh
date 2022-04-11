@@ -1,4 +1,3 @@
-#!/bin/sh
 ##############################################################################################################
 # Created By: komquest
 # Creation Date: 4/9/2022
@@ -14,6 +13,7 @@
 # Requirments:
 # 1. Dockerfile that uses "RUN" to execute this script with "FROM" of version 2.4 apache http from docker hub
 ##############################################################################################################
+#!/bin/sh
 
 # File Operations
 ## Create custom apache cert dir "/etc/pki/tls/" and set permissions
