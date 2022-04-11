@@ -89,18 +89,19 @@ pipeline {
         }
       }
 
+      stage('ERROROUT') {
 
-  }
+        steps {
 
-  post {
+          echo "BUILD: ${BUILD}"
+          echo "RUN: ${RUN}"
+          echo "TEST: ${TEST}"
 
-    always {
+        }
 
-      echo "BUILD: ${env.BUILD}"
-      echo "RUN: ${env.RUN}"
-      echo "TEST: ${env.TEST}"
 
-    }
+      }
+
 
   }
 
