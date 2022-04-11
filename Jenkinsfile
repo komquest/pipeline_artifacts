@@ -6,7 +6,7 @@ pipeline {
 
   agent any
 
-  environment { # Build environment vars
+  environment {
 
     //Variables
     SERVERNAME = sh(returnStdout: true, script: "./id.sh")
