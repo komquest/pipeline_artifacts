@@ -1,5 +1,5 @@
 # README
-## Purpose: This project takes a simple appache httpd server from dockerhub, does basic customizations, rebuilds as custom image, and then pushes to dockerhub with Jenkins.
+## Purpose: This project takes a simple apache httpd server from dockerhub, does basic customizations, rebuilds as custom image, and then pushes to dockerhub with Jenkins.
 
 ---
 
