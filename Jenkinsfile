@@ -2,18 +2,22 @@
 // Creation Date: 4/10/2022
 // Purpose:  Jenkinsfile for webserver automation build
 
-//Make all scripts excutable
-sh(script: "chmod +x *.sh")
-
-//Variables
-def SERVERNAME = sh(returnStdout: true, script: "id.sh")
-def BUILD = "0"
-def RUN = "0"
-def TEST = "0"
-
 pipeline {
 
   agent any
+
+  environment { # Build environment vars
+
+    //Variables
+    SERVERNAME = sh(returnStdout: true, script: "./id.sh")
+    BUILD = "0"
+    RUN = "0"
+    TEST = "0"
+
+    //Make all scripts excutable
+    //sh(script: "chmod +x *.sh")
+
+  }
 
   stages {
 
