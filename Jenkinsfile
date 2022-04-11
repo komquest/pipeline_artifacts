@@ -9,7 +9,7 @@ pipeline {
   environment {
 
     //Variables and make scripts executable
-    SERVERNAME = sh("chmod +x *.sh;./id.sh")
+    SERVERNAME = sh(script: "chmod +x *.sh;./id.sh", returnStdout true)
 
   }
 
@@ -21,7 +21,7 @@ pipeline {
         steps {
           
           echo 'Building Image'
-          sh("build.sh ${SERVERNAME}")
+          sh("./build.sh ${SERVERNAME}")
 
         }
       }
