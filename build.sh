@@ -20,6 +20,9 @@
 
 HTTPNAME=$1
 LOG="/var/log/webserver.log"
+DATE=$(date -u +%Y%m%d-%H.%M.%S)
+
+echo "<${DATE}><INFO>_Start Build ${HTTPNAME}"
 
 #Build X509 Certs
 
@@ -29,15 +32,12 @@ openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 -subj "/C=HW/ST=Hello/L
 
 docker build ./ -t $HTTPNAME >> ${LOG} 2>&1
 
-#Display Build, with simple error checking
-# 0 and 1 for Jenkins
+#Log Build, with simple error checking
 
 if [ $? -ne 0 ]; then
-  echo "<ERROR>_Please Verify Config" >> ${LOG} 2>&1
-  echo 1
+  echo "<${DATE}><ERROR>_Please Verify Config ${HTTPNAME}" >> ${LOG} 2>&1
 else
-  echo "<INFO>_Built ${HTTPNAME}" >> ${LOG} 2>&1
-  echo 0
+  echo "<${DATE}><INFO>_Built ${HTTPNAME}" >> ${LOG} 2>&1
 fi
 
 

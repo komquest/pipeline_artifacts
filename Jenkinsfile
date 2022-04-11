@@ -8,14 +8,10 @@ pipeline {
 
   environment {
 
-    //Variables
-    SERVERNAME = sh(returnStdout: true, script: "./id.sh")
-    BUILD = "0"
-    RUN = "0"
-    TEST = "0"
-
     //Make all scripts excutable
-    //sh(script: "chmod +x *.sh")
+    sh("chmod +x *.sh")
+    //Variables
+    SERVERNAME = sh("./id.sh")
 
   }
 
@@ -34,15 +30,6 @@ pipeline {
 
       stage('Run') {
         
-        when {
-
-          expression {
-
-            BUILD == "0" && RUN == "0" && TEST == "0"
-
-          }
-
-        }
         steps {
           
           echo 'Running Image'
@@ -52,16 +39,7 @@ pipeline {
       }
 
       stage('TEST') {
-        
-        when {
 
-          expression {
-
-            BUILD == "0" && RUN == "0" && TEST == "0"
-
-          }
-
-        }
         steps {
           
           echo 'Testing Container'
@@ -72,34 +50,12 @@ pipeline {
 
       stage('PUSH') {
         
-        when {
-
-          expression {
-
-            BUILD == "0" && RUN == "0" && TEST == "0"
-
-          }
-
-        }
         steps {
           
           echo 'Pushing Image'
           //sh "docker run -dit --name -p 443:5555 webserver:"
 
         }
-      }
-
-      stage('ERROROUT') {
-
-        steps {
-
-          echo "BUILD: ${BUILD}"
-          echo "RUN: ${RUN}"
-          echo "TEST: ${TEST}"
-
-        }
-
-
       }
 
 
