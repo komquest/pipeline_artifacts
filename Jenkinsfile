@@ -10,6 +10,8 @@ pipeline {
 
     //Variables and make scripts executable
     SERVERNAME = sh(script: "chmod +x *.sh;./id.sh", returnStdout: true)
+    HOSTPORT = "443"
+    DOCKERPORT = "5555"
 
   }
 
@@ -31,7 +33,7 @@ pipeline {
         steps {
           
           echo 'Running Image'
-          //sh "docker run -dit --name -p 443:5555 webserver:"
+          sh("./run.sh ${SERVERNAME} ${HOSTPORT} ${DOCKERPORT}")
 
         }
       }
