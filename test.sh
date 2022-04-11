@@ -16,16 +16,16 @@ LOG="/var/lib/jenkins/logs/webserver.log"
 DATE=$(date -u +%Y%m%d-%H.%M.%S)
 
 # Code to look for
-HTTPSTATUS = "HTTP/1.1 200 OK"
+HTTPSTATUS="HTTP/1.1 200 OK"
 
 # SSL Vars
-DOWNCERT = ""
-FILECERT = ""
+DOWNCERT=""
+FILECERT=""
 
 echo "<${DATE}><INFO>_Start HTTP TEST ${HTTPNAME}" >> ${LOG} 2>&1
 
 # Check For Status Code Match
-WEBCHECK = $(curl -sI -k "https://127.0.0.1:${HOSTPORT}" | head -1 | grep "${HTTPSTATUS}")
+WEBCHECK=$(curl -sI -k "https://127.0.0.1:${HOSTPORT}" | head -1 | grep "${HTTPSTATUS}")
 
 if [ -z $WEBCHECK ]; then
 
@@ -40,8 +40,8 @@ fi
 
 # Verify SSL
 #Grab SSL/TLS Cert hash
-DOWNCERT = ($(openssl s_client -connect "127.0.0.1:${HOSTPORT}" 2>/dev/null </dev/null |  sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sha256sum))
-FILECERT = ($(cat ./*.crt | sha256sum))
+DOWNCERT=($(openssl s_client -connect "127.0.0.1:${HOSTPORT}" 2>/dev/null </dev/null |  sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sha256sum))
+FILECERT=($(cat ./*.crt | sha256sum))
 
 if [ "$DOWNCERT" -n "$FILECERT"]; then
 
