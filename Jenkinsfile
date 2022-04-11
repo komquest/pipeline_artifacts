@@ -18,7 +18,7 @@ pipeline {
   stages {
 
       
-      stage('Build') {
+      stage('BUILD') {
 
         steps {
           
@@ -28,7 +28,7 @@ pipeline {
         }
       }
 
-      stage('Run') {
+      stage('RUN') {
         
         steps {
           

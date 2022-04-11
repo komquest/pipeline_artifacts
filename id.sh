@@ -7,7 +7,7 @@
 ##############################################################################################################
 
 ID=$(hexdump -n 4 -e '4/4 "%04X" 1 "\n"' /dev/urandom)
-HTTPNAME="webserver:${ID}"
+HTTPNAME="komquest/webserver:${ID}"
 
 LOG="/var/lib/jenkins/logs/webserver.log"
 DATE=$(date -u +%Y%m%d-%H.%M.%S)
