@@ -22,7 +22,7 @@ HTTPNAME=$1
 LOG="/var/log/webserver.log"
 DATE=$(date -u +%Y%m%d-%H.%M.%S)
 
-echo "<${DATE}><INFO>_Start Build ${HTTPNAME}"
+echo "<${DATE}><INFO>_Start Build ${HTTPNAME}" >> ${LOG} 2>&1
 
 #Build X509 Certs
 
