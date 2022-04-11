@@ -5,14 +5,11 @@
 pipeline {
 
   agent any
-    
-  //Make all scripts excutable
-  sh("chmod +x *.sh")
 
   environment {
 
-    //Variables
-    SERVERNAME = sh("./id.sh")
+    //Variables and make scripts executable
+    SERVERNAME = sh("chmod +x *.sh;./id.sh")
 
   }
 
