@@ -19,7 +19,7 @@
 #Get ServerName
 
 HTTPNAME=$1
-LOG="/var/log/webserver.log"
+LOG="/var/lib/jenkins/logs/webserver.log"
 DATE=$(date -u +%Y%m%d-%H.%M.%S)
 
 echo "<${DATE}><INFO>_Start Build ${HTTPNAME}" >> ${LOG} 2>&1
