@@ -12,6 +12,7 @@ pipeline {
     SERVERNAME = sh(script: "chmod +x *.sh;./id.sh", returnStdout: true).trim()
     HOSTPORT = "443"
     DOCKERPORT = "5555"
+    DOCKERHUB = credentials('dockerhub')
 
   }
 
@@ -63,7 +64,8 @@ pipeline {
         steps {
           
           echo 'Pushing Image'
-          //sh "docker run -dit --name -p 443:5555 webserver:"
+          sh("./push.sh ${SERVERNAME} ${dockerhub_USR} ${dockerhub_PSW}")
+
 
         }
       }
