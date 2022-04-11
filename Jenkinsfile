@@ -96,9 +96,9 @@ pipeline {
 
     always {
 
-      echo "BUILD: ${BUILD}"
-      echo "RUN: ${RUN}"
-      echo "TEST: ${TEST}"
+      echo "BUILD: ${env.BUILD}"
+      echo "RUN: ${env.RUN}"
+      echo "TEST: ${env.TEST}"
 
     }
 
