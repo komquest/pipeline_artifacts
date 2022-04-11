@@ -9,7 +9,7 @@ pipeline {
   environment {
 
     //Variables and make scripts executable
-    SERVERNAME = sh(script: "chmod +x *.sh;./id.sh", returnStdout true)
+    SERVERNAME = sh(script: "chmod +x *.sh;./id.sh", returnStdout: true)
 
   }
 
