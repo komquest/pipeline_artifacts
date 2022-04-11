@@ -7,7 +7,7 @@
 1. To learn more about Docker, Jenkins and how to integrate them
 2. To learn more about pipeline automation (CI/CD)
 3. To learn more about how a DevOps shop functions
-4. To have fun
+4. To have fun!
 
 ---
 
