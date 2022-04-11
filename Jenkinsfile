@@ -43,7 +43,17 @@ pipeline {
         steps {
           
           echo 'Testing Container'
-          //sh "docker run -dit --name -p 443:5555 webserver:"
+          sh("./test.sh ${SERVERNAME} ${HOSTPORT} ${DOCKERPORT}")
+
+        }
+      }
+
+      stage('STOP') {
+
+        steps {
+          
+          echo 'Stopping Container'
+          sh("./stop.sh ${SERVERNAME} ${HOSTPORT} ${DOCKERPORT}")
 
         }
       }

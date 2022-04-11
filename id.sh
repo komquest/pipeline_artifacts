@@ -6,8 +6,17 @@
 # of new server
 ##############################################################################################################
 
-
 ID=$(hexdump -n 4 -e '4/4 "%04X" 1 "\n"' /dev/urandom)
-NAME="webserver:${ID}"
+HTTPNAME="webserver:${ID}"
 
-echo $NAME
+LOG="/var/lib/jenkins/logs/webserver.log"
+DATE=$(date -u +%Y%m%d-%H.%M.%S)
+
+if [ $? -ne 0 ]; then
+  echo "<${DATE}><ERROR>_UNABLE_TO_CREATE_ID ${HTTPNAME}" >> ${LOG} 2>&1
+  exit 1
+else
+  echo "<${DATE}><INFO>_START_CREATED_ID ${HTTPNAME}" >> ${LOG} 2>&1
+  echo $NAME
+  exit 0
+fi
