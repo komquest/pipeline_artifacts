@@ -23,7 +23,7 @@ pipeline {
         steps {
           
           echo 'Building Image'
-          BUILD = sh(returnStdout: true, script: "build.sh ${SERVERNAME}").trim()
+          //BUILD = sh(returnStdout: true, script: "build.sh ${SERVERNAME}").trim()
 
         }
       }
