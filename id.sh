@@ -17,6 +17,6 @@ if [ $? -ne 0 ]; then
   exit 1
 else
   echo "<${DATE}><INFO>_START_CREATED_ID ${HTTPNAME}" >> ${LOG} 2>&1
-  echo $NAME
+  echo $HTTPNAME
   exit 0
 fi
